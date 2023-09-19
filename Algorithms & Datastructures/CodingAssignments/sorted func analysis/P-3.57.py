@@ -5,7 +5,6 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
-
 if __name__ == "__main__":
     list_max_size = 50000
     how_many_times = 100
