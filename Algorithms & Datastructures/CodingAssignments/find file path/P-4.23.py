@@ -14,7 +14,14 @@ def find(path, filename):
     None. The function should print the full path of each matching file.
     """
     # WRITE YOUR CODE HERE
-
+    list = os.listdir(path)
+    for i in list:
+        path += i
+        if os.path.isdir(path):
+            find(path, filename)
+        else:
+            if i.endswith(filename):
+                print(path)
     # Hint: You can use os.listdir(path) to get a list of all files and directories in 'path'.
     # For each entry in this list, use os.path.join(path, entry) to get the full path.
     # Check if this path ends with 'filename'. If it does, print the path.
