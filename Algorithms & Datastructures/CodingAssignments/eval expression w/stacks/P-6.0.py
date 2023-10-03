@@ -1,7 +1,7 @@
 from stack_list import Stack, Empty
-my_name = ""
+my_name = "TTyler Zenisek"
  
- 
+
 # Assignment: Programming Project
 def eval_expr(expression):
     """
@@ -15,6 +15,32 @@ def eval_expr(expression):
     int: The result of the arithmetic expression.
     """
     # WRITE YOUR CODE HERE
+    init_numbers = Stack()                                                  #first stack (numbers)
+    init_operators = Stack()                                                #first stack (operators)
+    numbers = Stack()                                                       #correct stack order (numbers)
+    operators = Stack()                                                     #correct stack order (operators)
+    current_number = ""                                                     #holds number value to keep track of numbers in str
+
+    for i in expression:                                                    #loops through expression to set up stacks
+        if i == "+" or i == "-":
+            init_numbers.push(int(current_number))
+            current_number = ""
+            init_operators.push(i)
+        else:
+            current_number += i
+
+    if current_number != "":                                                #if extra number held, push to stack
+        init_numbers.push(int(current_number))  
+
+    while not init_numbers.empty() and not init_operators.empty():          #reverses the stacks to correctly evaluate
+        if not init_numbers.empty():
+            value = init_numbers.pop()
+            numbers.push(value)
+
+        if not init_operators.empty():
+            o = init_operators.pop()
+            operators.push(o)
+        
     
     # Step 1: Initialize stacks for numbers and operators.
     # Hint: Use Stack class to create two stacks, one for numbers and one for operators.
