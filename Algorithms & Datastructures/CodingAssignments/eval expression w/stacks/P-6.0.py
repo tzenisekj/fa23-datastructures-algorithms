@@ -1,5 +1,6 @@
 from stack_list import Stack, Empty
-my_name = "TTyler Zenisek"
+
+my_name = "Tyler Zenisek"
  
 
 # Assignment: Programming Project
@@ -19,8 +20,8 @@ def eval_expr(expression):
     init_operators = Stack()                                                #first stack (operators)
     numbers = Stack()                                                       #correct stack order (numbers)
     operators = Stack()                                                     #correct stack order (operators)
-    current_number = ""   
-    result = 0                                                  #holds number value to keep track of numbers in str
+    current_number = ""                                                     #holds number value to keep track of numbers in str
+    result = 0                                                              #holds the return result
 
     for i in expression:                                                    #loops through expression to set up stacks
         if i == "+" or i == "-":
@@ -31,30 +32,32 @@ def eval_expr(expression):
             current_number += i
 
     if current_number != "":                                                #if extra number held, push to stack
-        init_numbers.push(int(current_number))  
+        init_numbers.push(int(current_number))
 
-    
-    while not init_numbers.is_empty() and not init_operators.is_empty():    #sorts stacks in correct order
+    while not init_numbers.is_empty() or not init_operators.is_empty():     #sets up stacks for evaluation
         if not init_numbers.is_empty():
             value = init_numbers.top()
-            init_numbers.pop()
             numbers.push(value)
+            init_numbers.pop()
 
         if not init_operators.is_empty():
-            o = init_operators.top()
+            op = init_operators.top()
+            operators.push(op)
             init_operators.pop()
-            operators.push(o)
 
-    while not numbers.is_empty() and not operators.is_empty():              #evaluate the expression from stacks
-        
-        num_1 = numbers.top() 
-        numbers.pop()
-        num_2 = numbers.top()
-        numbers.pop()
-
-        operation = operators.top()
+    result = numbers.top()                                                  #starts evaluation for the loop
+    numbers.pop()
+    while not numbers.is_empty() or not operators.is_empty():               #evaluation
+        op = operators.top()
         operators.pop()
-            
+        num = numbers.top()
+        numbers.pop()
+
+        if op == "+":
+            result += num
+        else:
+            result -= num
+
     
     # Step 1: Initialize stacks for numbers and operators.
     # Hint: Use Stack class to create two stacks, one for numbers and one for operators.
