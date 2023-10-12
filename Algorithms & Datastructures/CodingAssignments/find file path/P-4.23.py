@@ -28,3 +28,4 @@ if __name__ == '__main__':
  path = "./TDir/" # from current directory check inside TDir folder
  filename = ".docx" # All word ducuments
  find(path, filename)
+
