@@ -28,6 +28,15 @@ class SinglyLinkedList:
         None
         """
         # WRITE YOUR CODE HERE
+        if self.head == None:
+            n = Node(e)
+            self.head = n
+            self.tail = n
+        else:
+            n = Node(e)
+            n.next = self.head
+            self.head = n
+
  
     def add_tail(self, e):
         """
@@ -40,7 +49,15 @@ class SinglyLinkedList:
         None
         """
         # WRITE YOUR CODE HERE
- 
+        if self.head == None:
+            n = Node(e)
+            self.head = n
+            self.tail = n
+        else:
+            n = Node(e)
+            self.tail.next = n
+            self.tail = n
+
     def find_3rd_to_last(self):
         """
         This function finds the third-to-last element in the list.
@@ -52,7 +69,14 @@ class SinglyLinkedList:
         Any: The third-to-last element in the list, or None if the list has fewer than three elements.
         """
         # WRITE YOUR CODE HERE
-        return None
+        if self.head == None or self.head.next == None:
+            return None
+
+        current = self.head
+        while current.next.next != self.tail:
+            current = current.next
+
+        return current.data
  
     def reverse(self):
         """
@@ -65,6 +89,25 @@ class SinglyLinkedList:
         None
         """
         # WRITE YOUR CODE HERE
+        if self.head != None or self.head.next != None:
+            first = self.head
+            second = self.head.next
+            first.next = None
+
+            while True:
+                temp = second.next
+                second.next = first
+                first = second
+                second = temp
+
+                if temp == None:
+                    break
+
+            first = self.tail
+            second = self.head
+            self.head = first
+            self.tail = second
+
  
 if __name__ == '__main__':
     linked_list = SinglyLinkedList()
