@@ -1,5 +1,5 @@
 from stack_list import Stack, Empty
-my_name = "TTyler Zenisek"
+my_name = "Tyler Zenisek"
  
 
 # Assignment: Programming Project
@@ -46,7 +46,10 @@ def eval_expr(expression):
             operators.push(o)
 
     # while not numbers.is_empty() and not operators.is_empty():              #evaluate the expression from stacks
+<<<<<<< HEAD
     #     pass
+=======
+>>>>>>> 750e1900b8bd3b1cdffa12d1e610b0e2a1c2c0de
             
     
     # Step 1: Initialize stacks for numbers and operators.
