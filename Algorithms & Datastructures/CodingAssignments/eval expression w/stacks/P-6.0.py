@@ -45,15 +45,8 @@ def eval_expr(expression):
             init_operators.pop()
             operators.push(o)
 
-    while not numbers.is_empty() and not operators.is_empty():              #evaluate the expression from stacks
-        
-        num_1 = numbers.top() 
-        numbers.pop()
-        num_2 = numbers.top()
-        numbers.pop()
-
-        operation = operators.top()
-        operators.pop()
+    # while not numbers.is_empty() and not operators.is_empty():              #evaluate the expression from stacks
+    #     pass
             
     
     # Step 1: Initialize stacks for numbers and operators.
@@ -81,9 +74,8 @@ def eval_expr(expression):
     # Hint: The final result is the value you get after applying all operators to the numbers.
     
     return result  # replace this line with the correct return
- 
- 
- 
+
+
  
 if __name__ == '__main__':
     expression = "1+2-3+4-5"
